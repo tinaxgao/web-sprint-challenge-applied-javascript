@@ -25,10 +25,17 @@ const Tabs = (topics) => {
     }
   
   return tabTopics;
-
 }
 
+import axios from 'axios';
+
 const tabsAppender = (selector) => {
+axios.get(`http://localhost:5000/api/topics`)
+.then(resp => {
+    const tabsAll = Tabs(resp.data.topics);
+    document.querySelector(selector).appendChild(tabsAll)
+})
+  
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
@@ -37,5 +44,6 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 }
+
 
 export { Tabs, tabsAppender }
