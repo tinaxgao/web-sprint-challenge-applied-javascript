@@ -49,14 +49,16 @@ const cardAppender = (selector) => {
 
     // console.log(array);
 
-    for (let i=0; i<resp.data.articles.length; i++){
-            array.push(resp[data][articles][i]);
-    }
 
     array.forEach(i => 
-      document.querySelector(selector).appendChild(Card(i)) )
+      document.querySelector(selector).appendChild(Card(i)) );
 }
   )
+  .catch(err => {
+    console.error(err);})
+  .finally(() => {
+    console.log('I do not care whether it worked or not');
+  })
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
@@ -67,5 +69,4 @@ const cardAppender = (selector) => {
   //
 
 }
-console.log(cardAppender())
 export { Card, cardAppender }
